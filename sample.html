@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Critical Path: Script</title>
+
+    
+    <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+    <link rel="stylesheet" href="assets/css/style.css" media="print" onload="this.media='all'">
+
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <div><img src="awesome-photo.jpg" /></div>
+
+
+    <body>
+      <div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
+      ...
+    </body>
+    // CSS
+#my-div { display:block !important; }
+
+// HTML
+<div id = "my-div" style = "display:none;">
+
+  <p>This will be display:none until the CSS is applied!</p>
+
+</div>
+
+Nathan Bunney - good idea that ispired me, but i think better way is to remove overlay with javascript after document is fully loaded.
+<script>
+  $(document).ready( function() {
+  $("#loadOverlay").css("display","none");
+});
+</script>
+
+<script>
+  You also don't need to pull jQuery (which is incredibly heavy) to do that: document.addEventListener('load',function(){document.getElementById("loadOverlay").style.display="none";});
+</script>
+
+
+    <script>
+      var span = document.getElementsByTagName('span')[0];
+      span.textContent = 'interactive'; // change DOM text content
+      span.style.display = 'inline'; // change CSSOM property
+      // create a new element, style it, and append it to the DOM
+      var loadTime = document.createElement('div');
+      loadTime.textContent = 'You loaded this page on: ' + new Date();
+      loadTime.style.color = 'blue';
+      document.body.appendChild(loadTime);
+    </script>
+  </body>
+</html>
+
+<style>
+  #loadOverlay{display: none;}
+</style>
